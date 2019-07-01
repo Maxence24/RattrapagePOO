@@ -6,13 +6,14 @@ package contract;
  * @author Jean-Aymeric Diet
  */
 public enum ControllerOrder {
-
-	/** The English. */
-	English,
-	/** The French. */
-	Francais,
-	/** The Deutch. */
-	Deutsch,
-	/** The Indonesia. */
-	Indonesia
+	
+	Firstright,
+	//mouvement a droite du premier joueur
+	FirstLeft,
+	//mouvement a gauche du premier joueur
+	
+	SecondRight,
+	//mouvement a droite du second joueur
+	SecondLeft
+	//mouvement a gauche du second joueur
 }
