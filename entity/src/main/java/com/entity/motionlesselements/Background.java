@@ -6,7 +6,7 @@ import entity.Sprite;
 
 public class Background extends MotionlessElements {
 
-	private static final Sprite sprite = new Sprite('d', "Dirt.png");
+	private static final Sprite sprite = new Sprite('d', "Background.png");
 	static {
 		try {
 			sprite.loadImage();
