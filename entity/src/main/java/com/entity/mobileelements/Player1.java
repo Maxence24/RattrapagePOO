@@ -10,6 +10,7 @@ public class Player1 extends MobileElements {
 
 	private static final Sprite spritePlayer1 = new Sprite('y', "Rockford.png");
 	private boolean isWin;
+	private static int	SPEED		= 2;
 
 	static {
 		try {
@@ -30,7 +31,7 @@ public class Player1 extends MobileElements {
 		return spritePlayer1;
 	}
 
-	public void movePlayer(char direction) {
+	public void movePlayer1(char direction) {
 
 		if (this.getIsAlive()) {
 			switch (direction) {

@@ -28,6 +28,7 @@ public class Sprite {
 
 	public final void loadImage() throws IOException {
 		this.setImage(ImageIO.read(new File("sprite/" + this.getImageName())));
+		//BufferedImage image = ImageIO.read(C:\\Users\\bonne\\git\\RattrapagePOO\\entity\\sprite);
 	}
 
 	public final char getConsoleImage() {

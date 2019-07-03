@@ -10,59 +10,127 @@ import com.entity.motionlesselements.Wall;
 
 public class Map extends Entity {
 
-	private String contentOfMap;
 	private Entity[][] mapToChars;
 	public Map map;
+	private int id;
 	private CollisionsHandler collisionsHandler;
+	private static String MapForme = "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnonnnnnnnnnnnnnnnnnnnnnnnnntnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnw\r\n"
+			+ "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww";
 
-	public Map(final String content) {
-		map = new Map("wwwwwwwwwwwwwwww\r\n" + "wfddddddddddddddw\r\n" + "wdddddddddddddddw\r\n"
-				+ "wdddddddddddddddw\r\n" + "wdddddddddddddddw\r\n" + "wdddddddddddddddw\r\n" + "wdddddddddddddddw\r\n"
-				+ "wdddddddddddddddw\r\n" + "wdddddddddddddddw\r\n" + "wdddddddddddddddw\r\n" + "wdddddddddddddddw\r\n"
-				+ "wdddddddddddddddw\r\n" + "wdddddddddddddddw\r\n" + "wdddddddddddddddw\r\n" + "wddddddddddddddsw\r\n"
-				+ "wwwwwwwwwwwwwwww\r\n");
-		this.createMapToChars();
+	public Map(final int id, final String content) {
+		this.setId(id);
+		this.setMapForme(content);
+		this.setcreateMapToChars();
+
 	}
 
-	private void createMapToChars() {
-		String map = this.getContentOfMap();
-		if (getHeightMap() >= 1 && getWidthMap() >= 1) {
-			this.mapToChars = new Entity[this.getWidthMap()][this.getHeightMap()];
-			for (int y = 0; y < getHeightMap(); y++) {
-				String[] finalMap = map.split("\n");
-				for (int x = 0; x < getWidthMap(); x++) {
-					switch (finalMap[y].toCharArray()[x]) {
-					case 'w':
-						mapToChars[x][y] = new Wall(x, y);
-						break;
-					case 'd':
-						mapToChars[x][y] = new Background(x, y);
-						break;
-					case 'f':
-						mapToChars[x][y] = new Player1(x, y);
-						break;
-					case 's':
-						mapToChars[x][y] = new Player2(x, y);
-						break;
-					case 'r':
-						mapToChars[x][y] = new Redline(x, y);
-						break;
-					case 'b':
-						mapToChars[x][y] = new Blueline(x, y);
-						break;
-					default:
-						break;
-					}
-					mapToChars[x][y].setMap(this);
+	public Map() {
+		this(1, MapForme);
+	}
+
+	public String getMapForme() {
+		return this.MapForme;
+	}
+
+	public void setMapForme(final String content) {
+		this.MapForme = content;
+	}
+
+	public int getId() {
+		return this.id;
+	}
+
+	public void setId(final int id) {
+		this.id = id;
+	}
+
+	private void setcreateMapToChars() {
+		String map = this.getMapForme();
+		int HeightMap = 49;
+		int WidthMap = 74;
+		this.mapToChars = new Entity[WidthMap][HeightMap];
+
+		for (int y = 0; y < HeightMap; y++) {
+			String[] finalMap = map.split("\n");
+			for (int x = 0; x < WidthMap; x++) {
+				switch (finalMap[y].toCharArray()[x]) {
+				case 'w':
+					mapToChars[x][y] = new Wall(x, y);
+					break;
+				case 'd':
+					mapToChars[x][y] = new Background(x, y);
+					break;
+				case 'f':
+					mapToChars[x][y] = new Player1(x, y);
+					break;
+				case 's':
+					mapToChars[x][y] = new Player2(x, y);
+					break;
+				case 'r':
+					mapToChars[x][y] = new Redline(x, y);
+					break;
+				case 'b':
+					mapToChars[x][y] = new Blueline(x, y);
+					break;
+				default:
+					break;
 				}
+				mapToChars[x][y].setMap(this);
 			}
 		}
 	}
 
 	public Player1 getPlayer1() {
 		Entity[][] entity = this.getArrayMap();
-		for (int y = 0; y < getHeightMap(); y++) {
-			for (int x = 0; x < getWidthMap(); x++) {
+		for (int y = 0; y < 49; y++) {
+			for (int x = 0; x < 74; x++) {
 				if (entity[x][y] instanceof Player1) {
 					return (Player1) entity[x][y];
 				}
@@ -73,8 +141,8 @@ public class Map extends Entity {
 
 	public Player2 getPlayer2() {
 		Entity[][] entity = this.getArrayMap();
-		for (int y = 0; y < getHeightMap(); y++) {
-			for (int x = 0; x < getWidthMap(); x++) {
+		for (int y = 0; y < 79; y++) {
+			for (int x = 0; x < 74; x++) {
 				if (entity[x][y] instanceof Player2) {
 					return (Player2) entity[x][y];
 				}
@@ -98,27 +166,15 @@ public class Map extends Entity {
 	}
 
 	public Entity[][] getArrayMap() {
-
 		return this.mapToChars;
 	}
-
-	public int getHeightMap() {
-		String[] mapFirstLength = getContentOfMap().split("\n");
-		return mapFirstLength.length;
-	}
-
-	public int getWidthMap() {
-		String[] mapFirstLength = getContentOfMap().split("\n");
-		return mapFirstLength[0].length() - 1;
-	}
-
-	public String getContentOfMap() {
-		return contentOfMap;
-	}
-
-	public void setContentOfMap(String contentOfMap) {
-		this.contentOfMap = contentOfMap;
-	}
+	/*
+	 * public Entity[][] getArrayMap() {
+	 * 
+	 * return this.mapToChars; }
+	 * 
+	 * public String getContentOfMap() { return contentOfMap; }
+	 */
 
 	public void setCollisionsHandler(CollisionsHandler collisionsHandler) {
 		this.collisionsHandler = collisionsHandler;
