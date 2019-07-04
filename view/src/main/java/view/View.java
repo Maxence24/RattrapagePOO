@@ -18,6 +18,10 @@ public final class View implements IView, Runnable {
 		SwingUtilities.invokeLater(this);
 	}
 
+	public View() {
+
+	}
+
 	protected static ControllerOrder keyCodeToControllerOrder(final int keyCode) {
 		switch (keyCode) {
 		case KeyEvent.VK_Q:

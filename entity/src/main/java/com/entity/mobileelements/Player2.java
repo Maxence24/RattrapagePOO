@@ -8,8 +8,9 @@ import entity.Sprite;
 
 public class Player2 extends MobileElements {
 
-	private static final Sprite spritePlayer2 = new Sprite('y', "Rockford.png");
+	private static final Sprite spritePlayer2 = new Sprite('y', "Plan_de_travail_1-100.jpg");
 	private boolean isWin;
+	private static int	SPEED		= 2;
 
 	static {
 		try {
@@ -20,7 +21,7 @@ public class Player2 extends MobileElements {
 	}
 
 	public Player2(int x, int y) {
-		super(spritePlayer2, x, y);
+		super(spritePlayer2, x, y, SPEED);
 		this.isAlive = true;
 		this.isWin = false;
 

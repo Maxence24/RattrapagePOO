@@ -12,77 +12,11 @@ public class MobileElements extends Entity {
 
 	protected boolean isAlive;
 
-	public MobileElements(Sprite sprite, int x, int y) {
+	public MobileElements(Sprite sprite, int x, int y, final int speed) {
 		super(sprite, x, y);
 	}
 
-	public void entityMove1(int x, int y, int sideX, char direction) {
-
-		final int xpos = this.getPositionX();
-		final int ypos = this.getPositionY();
-		final Entity[][] loadArrayMap = this.getMap().getArrayMap();
-		final Player1 player1 = this.getMap().getPlayer1();
-		final CollisionsHandler getCollisionHandler = this.getMap().getCollisionsHandler();
-		boolean collision = false;
-		boolean isPlayer = false;
-
-		if (this instanceof Player1) {
-			collision = getCollisionHandler.checkForCollisions1(loadArrayMap, xpos + x, ypos + y);
-		} else {
-			collision = getCollisionHandler.checkForBackground(loadArrayMap, xpos + x, ypos + y);
-			isPlayer = getCollisionHandler.checkForPlayer1(loadArrayMap, xpos + x, ypos + y);
-		}
-
-		this.loadImage1(direction, this);
-
-		if (!collision) {
-
-			if (isPlayer == true) {
-				player1.setIsAlive(false);
-			} else {
-				loadArrayMap[xpos + x][ypos + y] = loadArrayMap[xpos][ypos];
-				loadArrayMap[xpos][ypos] = new Redline(xpos, ypos);
-				this.setPositionY(ypos + y);
-				this.setPositionX(xpos + x);
-			}
-
-		}
-
-	}
-
-	public void entityMove2(int x, int y, int sideX, char direction) {
-
-		final int xpos = this.getPositionX();
-		final int ypos = this.getPositionY();
-		final Entity[][] loadArrayMap = this.getMap().getArrayMap();
-		final Player2 player2 = this.getMap().getPlayer2();
-		final CollisionsHandler getCollisionHandler = this.getMap().getCollisionsHandler();
-		boolean collision = false;
-		boolean isPlayer = false;
-
-		if (this instanceof Player1) {
-			collision = getCollisionHandler.checkForCollisions1(loadArrayMap, xpos + x, ypos + y);
-		} else {
-			collision = getCollisionHandler.checkForBackground(loadArrayMap, xpos + x, ypos + y);
-			isPlayer = getCollisionHandler.checkForPlayer1(loadArrayMap, xpos + x, ypos + y);
-		}
-
-		this.loadImage1(direction, this);
-
-		if (!collision) {
-
-			if (isPlayer == true) {
-				player2.setIsAlive(false);
-			} else {
-				loadArrayMap[xpos + x][ypos + y] = loadArrayMap[xpos][ypos];
-				loadArrayMap[xpos][ypos] = new Redline(xpos, ypos);
-				this.setPositionY(ypos + y);
-				this.setPositionX(xpos + x);
-			}
-
-		}
-
-	}
+	
 
 	public void loadImage1(char direction, Entity entity) {
 

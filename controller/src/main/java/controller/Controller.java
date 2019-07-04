@@ -18,7 +18,7 @@ public final class Controller implements IController {
 
 	public void control() {
 		this.view.printMessage(
-				"Appuyer sur les touches 'E', 'F', 'D' ou 'I', pour afficher Hello world dans la langue d votre choix.");
+				"TRON is start ");
 	}
 
 	private void setView(final IView pview) {

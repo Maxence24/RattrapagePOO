@@ -1,6 +1,5 @@
 package view;
 
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.util.Observable;
@@ -52,8 +51,9 @@ class ViewPanel extends JPanel implements Observer {
 		Map map = this.viewFrame.getModel().getMap();
 		Entity[][] loadMap = map.getArrayMap();
 		Player1 player1 = null;
-		final int width = 49;
-		final int height = 74;
+		Player2 player2 = null;
+		final int width = 23;
+		final int height = 25;
 
 		if (map.getPlayer1() != null) {
 			player1 = this.viewFrame.getModel().getMap().getPlayer1();
@@ -63,31 +63,34 @@ class ViewPanel extends JPanel implements Observer {
 			graphics.setFont(font);
 
 		}
+		else if (map.getPlayer2() != null) {
+			player2 = this.viewFrame.getModel().getMap().getPlayer2();
+			int player2PosX = this.viewFrame.getModel().getMap().getPlayer1().getPositionX();
+			int player2PosY = this.viewFrame.getModel().getMap().getPlayer1().getPositionY();
+			Font font = new Font("Arial", Font.BOLD, 20);
+			graphics.setFont(font);
+		}
 
 		this.displayMap(graphics, width, height);
 
 	}
 
 	public void displayMap(Graphics graphics, int width, int height) {
-		final int imageSize = 8;
+		final int imageSize = 16;
 		Map map = this.viewFrame.getModel().getMap();
 		IModel getModel = this.viewFrame.getModel();
 		Entity[][] loadMap = map.getArrayMap();
 		Player1 player1 = this.viewFrame.getModel().getMap().getPlayer1();
-		for (int x = 0; x < 74; x++) {
-			for (int y = 0; y < 49; y++) {
+		for (int x = 0; x < 23; x++) {
+			for (int y = 0; y < 25; y++) {
 				if (loadMap[x][y] instanceof Wall) {
-					graphics.setColor(Color.BLACK);
-					graphics.fillRect(x * imageSize, y * imageSize, 8, 8);
+					graphics.drawImage(loadMap[x][y].getSprite().getImage(), x * imageSize, y * imageSize, this);
 				} else if (loadMap[x][y] instanceof Background) {
-					graphics.setColor(Color.WHITE);
-					graphics.fillRect(x * imageSize, y * imageSize, 8, 8);
+					graphics.drawImage(loadMap[x][y].getSprite().getImage(), x * imageSize, y * imageSize, this);
 				} else if (loadMap[x][y] instanceof Player1) {
-					graphics.setColor(Color.BLUE);
-					graphics.fillRect(x * imageSize, y * imageSize, 8, 8);
+					graphics.drawImage(loadMap[x][y].getSprite().getImage(), x * imageSize, y * imageSize, this);
 				} else if (loadMap[x][y] instanceof Player2) {
-					graphics.setColor(Color.RED);
-					graphics.fillRect(x * imageSize, y * imageSize, 8, 8);
+					graphics.drawImage(loadMap[x][y].getSprite().getImage(), x * imageSize, y * imageSize, this);
 				}
 
 			}
