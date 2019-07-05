@@ -44,7 +44,7 @@ public class Map extends Entity {
 		this.setId(id);
 		this.setMapForme(content);
 		this.setcreateMapToChars();
-
+		collisionsHandler = new CollisionsHandler();
 	}
 
 	public Map() {
@@ -127,17 +127,15 @@ public class Map extends Entity {
 		return null;
 	}
 
-	public void loop1() {
-		Player1 p = this.getPlayer1();
-		if (p != null) {
-			p.player1DeathLinkToplayer2();
+	public void loop() {
+		Player1 p1 = this.getPlayer1();
+		Player2 p2 = this.getPlayer2();
+		if (p1 != null) {
+			p1.player1DeathLinkToplayer2();
 		}
-	}
-
-	public void loop2() {
-		Player2 p = this.getPlayer2();
-		if (p != null) {
-			p.player2DeathLinkToplayer1();
+		
+		if (p2 != null) {
+			p2.player2DeathLinkToplayer1();
 		}
 	}
 

@@ -10,7 +10,8 @@ public class Player1 extends MobileElements {
 
 	private static final Sprite spritePlayer1 = new Sprite('y', "Plan_de_travail_1-100.jpg");
 	private boolean isWin;
-	private static int	SPEED		= 2;
+	private static int SPEED = 2;
+	int s = 0;
 
 	static {
 		try {
@@ -32,15 +33,38 @@ public class Player1 extends MobileElements {
 	}
 
 	public void movePlayer1(char direction) {
-
 		if (this.getIsAlive()) {
 			switch (direction) {
 
 			case 'Q':
-				this.entityMove1(0, -1, 0, direction);
+				if (s == 0) {
+					this.enitymove(0, -1, direction);
+					s = 1;
+				} else if (s == 1) {
+					this.enitymove(-1, 0, direction);
+					s = 2;
+				} else if (s == 2) {
+					this.enitymove(0, +1, direction);
+					s = 3;
+				} else if (s == 3) {
+					this.enitymove(+1, 0, direction);
+					s = 0;
+				}
 				break;
-			case 'D':
-				this.entityMove1(-1, 0, -1, direction);
+			case 'S':
+				if (s == 0) {
+					this.enitymove(0, +1, direction);
+					s = 3;
+				} else if (s == 1) {
+					this.enitymove(+1, 0, direction);
+					s = 0;
+				} else if (s == 2) {
+					this.enitymove(0, -1, direction);
+					s = 1;
+				} else if (s == 3) {
+					this.enitymove(-1, 0, direction);
+					s = 2;
+				}
 				break;
 			}
 		}

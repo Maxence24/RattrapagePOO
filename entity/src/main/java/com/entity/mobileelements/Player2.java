@@ -31,16 +31,40 @@ public class Player2 extends MobileElements {
 		return spritePlayer2;
 	}
 
-	public void movePlayer(char direction) {
-
+	public void movePlayer2(char direction) {
+		int a = 0;
 		if (this.getIsAlive()) {
 			switch (direction) {
 
-			case '1':
-				this.entityMove2(0, -1, 0, direction);
+			case 'L':
+				if (a == 0) {
+					this.enitymove2(0, -1, direction);
+					a = 1;
+				} else if (a == 1) {
+					this.enitymove2(-1, 0, direction);
+					a = 2;
+				} else if (a == 2) {
+					this.enitymove2(0, +1, direction);
+					a = 3;
+				} else if (a == 3) {
+					this.enitymove2(+1, 0, direction);
+					a = 0;
+				}
 				break;
-			case '2':
-				this.entityMove2(-1, 0, -1, direction);
+			case 'M':
+				if (a == 0) {
+					this.enitymove2(0, +1, direction);
+					a = 3;
+				} else if (a == 1) {
+					this.enitymove2(1, 0, direction);
+					a = 0;
+				} else if (a == 2) {
+					this.enitymove2(0, -1, direction);
+					a = 1;
+				} else if (a == 3) {
+					this.enitymove2(-1, 0, direction);
+					a = 2;
+				}
 				break;
 			}
 		}

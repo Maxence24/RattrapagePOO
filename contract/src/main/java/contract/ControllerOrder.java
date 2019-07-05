@@ -7,14 +7,14 @@ package contract;
  */
 public enum ControllerOrder {
 
-	FirstRight,
+	S,
 	// mouvement a droite du premier joueur
-	FirstLeft,
+	Q,
 	// mouvement a gauche du premier joueur
 
-	SecondRight,
+	M,
 	// mouvement a droite du second joueur
-	SecondLeft,
+	L,
 	// mouvement a gauche du second joueur
 	nothing
 }

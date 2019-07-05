@@ -15,10 +15,8 @@ public class CollisionsHandler {
 
 	}
 
-	public boolean checkForCollisions1(Entity[][] entity, int x, int y) {
-		if (entity[x][y] instanceof Player2) {
-			return true;
-		} else if (entity[x][y] instanceof Wall) {
+	public boolean checkForCollisions(Entity[][] entity, int x, int y) {
+		if (entity[x][y] instanceof Wall) {
 			return true;
 		} else if (entity[x][y] instanceof Blueline) {
 			return true;
@@ -37,19 +35,6 @@ public class CollisionsHandler {
 		return false;
 	}
 
-	public boolean checkForCollisions2(Entity[][] entity, int x, int y) {
-		if (entity[x][y] instanceof Player1) {
-			return true;
-		} else if (entity[x][y] instanceof Wall) {
-			return true;
-		} else if (entity[x][y] instanceof Blueline) {
-			return true;
-		} else if (entity[x][y] instanceof Redline) {
-			return true;
-		} else {
-			return false;
-		}
-	}
 
 	public boolean checkForPlayer2(Entity[][] entity, int x, int y) {
 

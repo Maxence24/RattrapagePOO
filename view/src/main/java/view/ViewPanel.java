@@ -102,66 +102,17 @@ class ViewPanel extends JPanel implements Observer {
 	}
 
 	/*
-	 * public void displayMap(Graphics graphics, int width, int height) {
-	 * 
-	 * final int imageSize = 16; Map map = this.viewFrame.getModel().getMap();
-	 * IModel getModel = this.viewFrame.getModel(); Entity[][] loadMap =
-	 * map.getArrayMap(); Player1 player1 =
-	 * this.viewFrame.getModel().getMap().getPlayer1(); Player2 player2 =
-	 * this.viewFrame.getModel().getMap().getPlayer2(); final int timerResetValue =
-	 * 200;
-	 * 
-	 * for (int x = 0; x < map.getWidthMap(); x++) { for (int y = 0; y <
-	 * map.getHeightMap(); y++) {
-	 * graphics.drawImage(loadMap[x][y].getSprite().getImage(), x * imageSize, y *
-	 * imageSize, this); } }
-	 * 
-	 * if (!player1.getIsAlive() && hasBeenNotifiedToStop == false &&
-	 * !player2.getIsAlive() && hasBeenNotifiedToStop == false) {
-	 * 
-	 * hasBeenNotifiedToStop = true; graphics.clearRect(0, 0, width, height);
-	 * this.viewFrame.printMessage("You died ! Try again..."); hasBeenNotifiedToStop
-	 * = false;
-	 * 
-	 * } }
-	 * 
-	 * public void reverseFocusOnScreenAndStats(Graphics graphics, double scale, int
-	 * width, int height, int playerPosX1, int playerPosY1, Player1 player1, int
-	 * playerPosX2, int playerPosY2, Player2 player2, Map map, int imageSize) {
-	 * 
-	 * final int xStartStatsValues = width - 220; final int yStartStatsValues = 0;
-	 * final int xEndStatsValues = 240; final int yEndStatsValues = 65; final int
-	 * xStartStatsDisplay = width - 210;
-	 * 
-	 * ((Graphics2D) graphics).scale(1 / scale, 1 / scale);
-	 * 
-	 * graphics.translate((int) (+playerPosX1 * imageSize * scale - width / 2),
-	 * (int) (+playerPosY1 * imageSize * scale - height / 2));
-	 * graphics.setColor(Color.white); graphics.fillRect(xStartStatsValues,
-	 * yStartStatsValues, xEndStatsValues, yEndStatsValues);
-	 * graphics.setColor(Color.BLUE); graphics.drawString("Remaining time : " +
-	 * counter, xStartStatsDisplay, 20); graphics.setColor(Color.RED);
-	 * 
-	 * graphics.translate((int) (+playerPosX2 * imageSize * scale - width / 2),
-	 * (int) (+playerPosY1 * imageSize * scale - height / 2));
-	 * graphics.setColor(Color.white); graphics.fillRect(xStartStatsValues,
-	 * yStartStatsValues, xEndStatsValues, yEndStatsValues);
-	 * graphics.setColor(Color.BLUE); graphics.drawString("Remaining time : " +
-	 * counter, xStartStatsDisplay, 20); graphics.setColor(Color.RED);
-	 * 
-	 * }
-	 * 
-	 * public static void startTimer() { // This is a timer ViewPanel drawTimer =
-	 * new ViewPanel(); TimerTask timerTask = new TimerTask() {
-	 * 
-	 * @Override public void run() { if (counter != -100 && counter > 0) {
-	 * counter--;// increments the counter } } }; Timer timer = new
-	 * Timer("MyTimer"); timer.scheduleAtFixedRate(timerTask, 1000, 1000); }
-	 * 
-	 * public int getCounter() { return counter; }
-	 * 
-	 * public void setCounter(int newCounter) throws IndexOutOfBoundsException { if
-	 * (newCounter > 0 && newCounter < 10000) { ViewPanel.counter = newCounter; }
-	 * else { throw new IndexOutOfBoundsException("Wrong parameters"); } }
+	 public static void startTimer() { // This is a timer ViewPanel drawTimer =
+	 new ViewPanel(); TimerTask timerTask = new TimerTask() {
+	 
+	 @Override public void run() { if (counter != -100 && counter > 0) {
+	 counter--;// increments the counter } } }; Timer timer = new
+	 Timer("MyTimer"); timer.scheduleAtFixedRate(timerTask, 1000, 1000); }
+	 
+	 public int getCounter() { return counter; }
+	  
+	 public void setCounter(int newCounter) throws IndexOutOfBoundsException { if
+	 (newCounter > 0 && newCounter < 10000) { ViewPanel.counter = newCounter; }
+	 else { throw new IndexOutOfBoundsException("Wrong parameters"); } }
 	 */
 }

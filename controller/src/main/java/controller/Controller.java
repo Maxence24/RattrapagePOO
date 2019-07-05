@@ -31,21 +31,32 @@ public final class Controller implements IController {
 
 	public void orderPerform(final ControllerOrder controllerOrder) {
 		switch (controllerOrder) {
-		case FirstLeft:
-			this.model.getMap();
+		case Q:
+			this.model.getMap().getPlayer1().movePlayer1('Q');
 			break;
-		case FirstRight:
-			this.model.getMap();
+		case S:
+			this.model.getMap().getPlayer1().movePlayer1('S');
 			break;
-		case SecondLeft:
-			this.model.getMap();
+		case L:
+			this.model.getMap().getPlayer2().movePlayer2('L');
 			break;
-		case SecondRight:
-			this.model.getMap();
+		case M:
+			this.model.getMap().getPlayer2().movePlayer2('M');
 			break;
 		default:
 			break;
 		}
 	}
-
+public void start() {
+		
+		while(true) {
+			this.model.loop();
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+} 
 }
