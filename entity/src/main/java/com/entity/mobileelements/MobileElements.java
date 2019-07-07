@@ -11,23 +11,20 @@ import entity.Sprite;
 
 public class MobileElements extends Entity {
 
-	protected boolean isAlive;
-	private final int speed;
+	protected boolean isAlive1;
+	protected boolean isAlive2;
 
-	public MobileElements(Sprite sprite, int x, int y, final int speed) {
+	public MobileElements(Sprite sprite, int x, int y) {
 		super(sprite, x, y);
-		this.speed = speed;
+
 	}
 
-	public void enitymove(int x, int y, char direction) {
+	public void enitymove1(int x, int y) {
 		final int xpos = this.getPositionX();
 		final int ypos = this.getPositionY();
 		final Entity[][] loadArrayMap = this.getMap().getArrayMap();
-		final Player1 player1 = this.getMap().getPlayer1();
-		final Player2 player2 = this.getMap().getPlayer2();
 		final CollisionsHandler getCollisionHandler = this.getMap().getCollisionsHandler();
 		boolean collision1 = false;
-		boolean collision2 = false;
 		boolean isPlayer = false;
 
 		if (this instanceof Player1) {
@@ -42,9 +39,20 @@ public class MobileElements extends Entity {
 			loadArrayMap[xpos][ypos] = new Redline(xpos, ypos);
 			this.setPositionY(ypos + y);
 			this.setPositionX(xpos + x);
-
+		} else if (collision1) {
+			this.setIsAlive1(false);
 		}
-		if (this instanceof Player2) {
+	}
+
+	public void enitymove2(int x, int y) {
+		final int xpos = this.getPositionX();
+		final int ypos = this.getPositionY();
+		final Entity[][] loadArrayMap = this.getMap().getArrayMap();
+		final CollisionsHandler getCollisionHandler = this.getMap().getCollisionsHandler();
+		boolean collision2 = false;
+		boolean isPlayer = false;
+
+		if (this instanceof Player1) {
 			collision2 = getCollisionHandler.checkForCollisions(loadArrayMap, xpos + x, ypos + y);
 		} else {
 			collision2 = getCollisionHandler.checkForBackground(loadArrayMap, xpos + x, ypos + y);
@@ -56,7 +64,10 @@ public class MobileElements extends Entity {
 			loadArrayMap[xpos][ypos] = new Blueline(xpos, ypos);
 			this.setPositionY(ypos + y);
 			this.setPositionX(xpos + x);
+		} else if (collision2) {
+			this.setIsAlive2(false);
 		}
+
 	}
 
 	public void loadImage1(char direction, Entity entity) {
@@ -111,12 +122,19 @@ public class MobileElements extends Entity {
 		}
 	}
 
-	public boolean getIsAlive() {
-		return this.isAlive;
+	public boolean getIsAlive1() {
+		return this.isAlive1;
 	}
 
-	public void setIsAlive(boolean isAlive) {
-		this.isAlive = isAlive;
+	public void setIsAlive1(boolean isAlive1) {
+		this.isAlive1 = isAlive1;
 	}
 
+	public boolean getIsAlive2() {
+		return this.isAlive2;
+	}
+
+	public void setIsAlive2(boolean isAlive2) {
+		this.isAlive2 = isAlive2;
+	}
 }

@@ -12,43 +12,25 @@ public class Map extends Entity {
 
 	private Entity[][] mapToChars;
 	public Map map;
-	private int id;
 	private CollisionsHandler collisionsHandler;
-	private static String MapForme = "wwwwwwwwwwwwwwwwwwwwwww\r\n"
-			+ "wdddddddddddddddddddddw\r\n"
-			+ "wdddddfdddddddddddddddw\r\n"
-			+ "wdddddddddddddddddddddw\r\n"
-			+ "wdddddddddddddddddddddw\r\n"
-			+ "wdddddddddddddddddddddw\r\n"
-			+ "wdddddddddddddddddddddw\r\n"
-			+ "wdddddddddddddddddddddw\r\n"
-			+ "wdddddddddddddddddddddw\r\n"
-			+ "wdddddddddddddddddddddw\r\n"
-			+ "wdddddddddddddddddddddw\r\n"
-			+ "wdddddddddddddddddddddw\r\n"
-			+ "wdddddddddddddddddddddw\r\n"
-			+ "wdddddddddddddddddddddw\r\n"
-			+ "wdddddddddddddddddddddw\r\n"
-			+ "wdddddddddddddddddddddw\r\n"
-			+ "wdddddddddddddddddddddw\r\n"
-			+ "wdddddddddddddddddddddw\r\n"
-			+ "wdddddddddddddddddddddw\r\n"
-			+ "wdddddddddddddddddddddw\r\n"
-			+ "wdddddddddddddddddsdddw\r\n"
-			+ "wdddddddddddddddddddddw\r\n"
-			+ "wdddddddddddddddddddddw\r\n"
-			+ "wdddddddddddddddddddddw\r\n"
-			+ "wwwwwwwwwwwwwwwwwwwwwww\r\n";
+	private static String MapForme = "wwwwwwwwwwwwwwwwwwwwwww\r\n" + "wdddddddddddddddddddddw\r\n"
+			+ "wdddddfdddddddddddddddw\r\n" + "wdddddddddddddddddddddw\r\n" + "wdddddddddddddddddddddw\r\n"
+			+ "wdddddddddddddddddddddw\r\n" + "wdddddddddddddddddddddw\r\n" + "wdddddddddddddddddddddw\r\n"
+			+ "wdddddddddddddddddddddw\r\n" + "wdddddddddddddddddddddw\r\n" + "wdddddddddddddddddddddw\r\n"
+			+ "wdddddddddddddddddddddw\r\n" + "wdddddddddddddddddddddw\r\n" + "wdddddddddddddddddddddw\r\n"
+			+ "wdddddddddddddddddddddw\r\n" + "wdddddddddddddddddddddw\r\n" + "wdddddddddddddddddddddw\r\n"
+			+ "wdddddddddddddddddddddw\r\n" + "wdddddddddddddddddddddw\r\n" + "wdddddddddddddddddddddw\r\n"
+			+ "wdddddddddddddddddsdddw\r\n" + "wdddddddddddddddddddddw\r\n" + "wdddddddddddddddddddddw\r\n"
+			+ "wdddddddddddddddddddddw\r\n" + "wwwwwwwwwwwwwwwwwwwwwww\r\n";
 
-	public Map(final int id, final String content) {
-		this.setId(id);
+	public Map(final String content) {
 		this.setMapForme(content);
 		this.setcreateMapToChars();
 		collisionsHandler = new CollisionsHandler();
 	}
 
 	public Map() {
-		this(1, MapForme);
+		this(MapForme);
 	}
 
 	public String getMapForme() {
@@ -57,14 +39,6 @@ public class Map extends Entity {
 
 	public void setMapForme(final String content) {
 		this.MapForme = content;
-	}
-
-	public int getId() {
-		return this.id;
-	}
-
-	public void setId(final int id) {
-		this.id = id;
 	}
 
 	private void setcreateMapToChars() {
@@ -128,27 +102,17 @@ public class Map extends Entity {
 	}
 
 	public void loop() {
-		Player1 p1 = this.getPlayer1();
-		Player2 p2 = this.getPlayer2();
-		if (p1 != null) {
-			p1.player1DeathLinkToplayer2();
-		}
-		
-		if (p2 != null) {
-			p2.player2DeathLinkToplayer1();
+		boolean p1 = this.getPlayer1().getIsAlive1();
+		boolean p2 = this.getPlayer2().getIsAlive2();
+		if (p1 == true && p2 == true) {
+			this.getPlayer1().defaultDirection1();
+			this.getPlayer2().defaultDirection2();
 		}
 	}
 
 	public Entity[][] getArrayMap() {
 		return this.mapToChars;
 	}
-	/*
-	 * public Entity[][] getArrayMap() {
-	 * 
-	 * return this.mapToChars; }
-	 * 
-	 * public String getContentOfMap() { return contentOfMap; }
-	 */
 
 	public void setCollisionsHandler(CollisionsHandler collisionsHandler) {
 		this.collisionsHandler = collisionsHandler;

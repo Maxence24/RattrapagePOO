@@ -15,6 +15,8 @@ public abstract class Main {
 		view.setController(controller);
 
 		controller.control();
-		controller.orderPerform(ControllerOrder.nothing);
+		controller.orderPerform(ControllerOrder.Q);
+        controller.orderPerform(ControllerOrder.L);
+		controller.start();
 	}
 }

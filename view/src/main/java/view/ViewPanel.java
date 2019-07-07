@@ -23,6 +23,7 @@ class ViewPanel extends JPanel implements Observer {
 	private boolean isTimerStart = false;
 	private boolean hasBeenNotifiedToStop = false;
 	private static int counter = 200;
+	private boolean toStop = false;
 
 	public ViewPanel() {
 	}
@@ -55,24 +56,19 @@ class ViewPanel extends JPanel implements Observer {
 		final int width = 23;
 		final int height = 25;
 
-		if (map.getPlayer1() != null) {
-			player1 = this.viewFrame.getModel().getMap().getPlayer1();
-			int player1PosX = this.viewFrame.getModel().getMap().getPlayer1().getPositionX();
-			int player1PosY = this.viewFrame.getModel().getMap().getPlayer1().getPositionY();
-			Font font = new Font("Arial", Font.BOLD, 20);
-			graphics.setFont(font);
+		player1 = this.viewFrame.getModel().getMap().getPlayer1();
+		int player1PosX = this.viewFrame.getModel().getMap().getPlayer1().getPositionX();
+		int player1PosY = this.viewFrame.getModel().getMap().getPlayer1().getPositionY();
+		Font font1 = new Font("Arial", Font.BOLD, 20);
+		graphics.setFont(font1);
 
-		}
-		else if (map.getPlayer2() != null) {
-			player2 = this.viewFrame.getModel().getMap().getPlayer2();
-			int player2PosX = this.viewFrame.getModel().getMap().getPlayer1().getPositionX();
-			int player2PosY = this.viewFrame.getModel().getMap().getPlayer1().getPositionY();
-			Font font = new Font("Arial", Font.BOLD, 20);
-			graphics.setFont(font);
-		}
+		player2 = this.viewFrame.getModel().getMap().getPlayer2();
+		int player2PosX = this.viewFrame.getModel().getMap().getPlayer1().getPositionX();
+		int player2PosY = this.viewFrame.getModel().getMap().getPlayer1().getPositionY();
+		Font font2 = new Font("Arial", Font.BOLD, 20);
+		graphics.setFont(font2);
 
 		this.displayMap(graphics, width, height);
-
 	}
 
 	public void displayMap(Graphics graphics, int width, int height) {
@@ -81,6 +77,7 @@ class ViewPanel extends JPanel implements Observer {
 		IModel getModel = this.viewFrame.getModel();
 		Entity[][] loadMap = map.getArrayMap();
 		Player1 player1 = this.viewFrame.getModel().getMap().getPlayer1();
+		Player2 player2 = this.viewFrame.getModel().getMap().getPlayer2();
 		for (int x = 0; x < 23; x++) {
 			for (int y = 0; y < 25; y++) {
 				if (loadMap[x][y] instanceof Wall) {
@@ -92,27 +89,19 @@ class ViewPanel extends JPanel implements Observer {
 				} else if (loadMap[x][y] instanceof Player2) {
 					graphics.drawImage(loadMap[x][y].getSprite().getImage(), x * imageSize, y * imageSize, this);
 				}
-
 			}
 		}
+		if (!player1.getIsAlive1() && toStop == false) {
+			toStop = true;
+			graphics.clearRect(0, 0, 600, 400);
+			this.viewFrame.printMessage("Congratulations Player 2, you won !");
+			System.exit(0);
+		}
+		if (!player2.getIsAlive2() && toStop == false) {
+			toStop = true;
+			graphics.clearRect(0, 0, 600, 400);
+			this.viewFrame.printMessage("Congratulations Player 1, you won !");
+			System.exit(0);
+		}
 	}
-
-	public void finalMap() {
-
-	}
-
-	/*
-	 public static void startTimer() { // This is a timer ViewPanel drawTimer =
-	 new ViewPanel(); TimerTask timerTask = new TimerTask() {
-	 
-	 @Override public void run() { if (counter != -100 && counter > 0) {
-	 counter--;// increments the counter } } }; Timer timer = new
-	 Timer("MyTimer"); timer.scheduleAtFixedRate(timerTask, 1000, 1000); }
-	 
-	 public int getCounter() { return counter; }
-	  
-	 public void setCounter(int newCounter) throws IndexOutOfBoundsException { if
-	 (newCounter > 0 && newCounter < 10000) { ViewPanel.counter = newCounter; }
-	 else { throw new IndexOutOfBoundsException("Wrong parameters"); } }
-	 */
 }

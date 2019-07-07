@@ -2,8 +2,12 @@ package model;
 
 import java.util.Observable;
 
+import com.entity.mobileelements.Player1;
+import com.entity.mobileelements.Player2;
+
 import contract.IModel;
 import entity.Map;
+import java.sql.CallableStatement;
 
 public final class Model extends Observable implements IModel {
 
@@ -38,8 +42,27 @@ public final class Model extends Observable implements IModel {
 
 	@Override
 	public void loop() {
-		this.getMap();
+		if(this.getMap().getPlayer1() != null && this.getMap().getPlayer2() != null) {
 		this.modelNotify();
+		}
+	}
+
+	@Override
+	public Player1 getPlayer1() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Player2 getPlayer2() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void loadMap() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

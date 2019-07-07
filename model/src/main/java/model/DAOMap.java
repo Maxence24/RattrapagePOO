@@ -73,7 +73,7 @@ public class DAOMap extends DAOEntity<Map> {
 			call.execute();
 			final ResultSet resultSet = call.getResultSet();
 			if (resultSet.first()) {
-				map = new Map(id, resultSet.getString("contentMap"));
+				map = new Map(resultSet.getString("contentMap"));
 			}
 			return map;
 		} catch (final SQLException e) {

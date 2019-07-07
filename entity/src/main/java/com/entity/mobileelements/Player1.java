@@ -11,7 +11,8 @@ public class Player1 extends MobileElements {
 	private static final Sprite spritePlayer1 = new Sprite('y', "Plan_de_travail_1-100.jpg");
 	private boolean isWin;
 	private static int SPEED = 2;
-	int s = 0;
+	private int lastDirectionX;
+	private int lastDirectionY;
 
 	static {
 		try {
@@ -22,8 +23,8 @@ public class Player1 extends MobileElements {
 	}
 
 	public Player1(int x, int y) {
-		super(spritePlayer1, x, y, SPEED);
-		this.isAlive = true;
+		super(spritePlayer1, x, y);
+		this.isAlive1 = true;
 		this.isWin = false;
 
 	}
@@ -33,41 +34,64 @@ public class Player1 extends MobileElements {
 	}
 
 	public void movePlayer1(char direction) {
-		if (this.getIsAlive()) {
+		if (this.getIsAlive1()) {
 			switch (direction) {
 
 			case 'Q':
-				if (s == 0) {
-					this.enitymove(0, -1, direction);
-					s = 1;
-				} else if (s == 1) {
-					this.enitymove(-1, 0, direction);
-					s = 2;
-				} else if (s == 2) {
-					this.enitymove(0, +1, direction);
-					s = 3;
-				} else if (s == 3) {
-					this.enitymove(+1, 0, direction);
-					s = 0;
+				if (lastDirectionX == 0 && lastDirectionY == -1) {
+					this.enitymove1(-1, 0);
+					this.setLastDirection1(-1, 0);
+				} else if (lastDirectionX == -1 && lastDirectionY == 0) {
+					this.enitymove1(0, +1);
+					this.setLastDirection1(0, +1);
+				} else if (lastDirectionX == 0 && lastDirectionY == +1) {
+					this.enitymove1(+1, 0);
+					this.setLastDirection1(+1, 0);
+				} else if (lastDirectionX == +1 && lastDirectionY == 0) {
+					this.enitymove1(0, -1);
+					this.setLastDirection1(0, -1);
+				} else {
+					this.enitymove1(-1, 0);
+					this.setLastDirection1(-1, 0);
 				}
 				break;
-			case 'S':
-				if (s == 0) {
-					this.enitymove(0, +1, direction);
-					s = 3;
-				} else if (s == 1) {
-					this.enitymove(+1, 0, direction);
-					s = 0;
-				} else if (s == 2) {
-					this.enitymove(0, -1, direction);
-					s = 1;
-				} else if (s == 3) {
-					this.enitymove(-1, 0, direction);
-					s = 2;
+			case 's':
+				if (lastDirectionX == +1 && lastDirectionY == 0) {
+					this.enitymove1(0, +1);
+					this.setLastDirection1(0, +1);
+				} else if (lastDirectionX == -1 && lastDirectionY == 0) {
+					this.enitymove1(0, -1);
+					this.setLastDirection1(0, -1);
+				} else if (lastDirectionX == 0 && lastDirectionY == +1) {
+					this.enitymove1(-1, 0);
+					this.setLastDirection1(-1, 0);
+				} else if (lastDirectionX == 0 && lastDirectionY == -1) {
+					this.enitymove1(+1, 0);
+					this.setLastDirection1(+1, 0);
+				} else {
+					this.enitymove1(+1, 0);
+					this.setLastDirection1(+1, 0);
 				}
 				break;
 			}
 		}
+	}
+
+	public void setLastDirection1(int x, int y) {
+		this.lastDirectionX = x;
+		this.lastDirectionY = y;
+	}
+
+	public int getLastDirectionXPlayer1() {
+		return lastDirectionX;
+	}
+
+	public int getLastDirectionYPlayer1() {
+		return lastDirectionY;
+	}
+
+	public void defaultDirection1() {
+		this.enitymove1(this.getLastDirectionXPlayer1(), this.getLastDirectionYPlayer1());
 	}
 
 	public boolean getIsWin() {
@@ -87,7 +111,7 @@ public class Player1 extends MobileElements {
 				|| this.getMap().getArrayMap()[x - 1][y] instanceof Blueline
 				|| this.getMap().getArrayMap()[x][y + 1] instanceof Blueline
 				|| this.getMap().getArrayMap()[x][y - 1] instanceof Blueline) {
-			this.setIsAlive(false);
+			this.setIsAlive1(false);
 			this.loadImage1('X', this);
 
 			try {

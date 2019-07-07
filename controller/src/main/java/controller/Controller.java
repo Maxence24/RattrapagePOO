@@ -6,9 +6,7 @@ import contract.IModel;
 import contract.IView;
 
 public final class Controller implements IController {
-
 	private IView view;
-
 	private IModel model;
 
 	public Controller(final IView view, final IModel model) {
@@ -17,8 +15,7 @@ public final class Controller implements IController {
 	}
 
 	public void control() {
-		this.view.printMessage(
-				"TRON is start ");
+		this.view.printMessage("TRON is start ");
 	}
 
 	private void setView(final IView pview) {
@@ -47,9 +44,10 @@ public final class Controller implements IController {
 			break;
 		}
 	}
-public void start() {
-		
-		while(true) {
+
+	public void start() {
+
+		while (true) {
 			this.model.loop();
 			try {
 				Thread.sleep(100);
@@ -58,5 +56,5 @@ public void start() {
 				e.printStackTrace();
 			}
 		}
-} 
+	}
 }
