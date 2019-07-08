@@ -13,6 +13,8 @@ public class MobileElements extends Entity {
 
 	protected boolean isAlive1;
 	protected boolean isAlive2;
+	private boolean Winner1;
+	private boolean Winner2;
 
 	public MobileElements(Sprite sprite, int x, int y) {
 		super(sprite, x, y);
@@ -25,14 +27,12 @@ public class MobileElements extends Entity {
 		final Entity[][] loadArrayMap = this.getMap().getArrayMap();
 		final CollisionsHandler getCollisionHandler = this.getMap().getCollisionsHandler();
 		boolean collision1 = false;
-		boolean isPlayer = false;
 
 		if (this instanceof Player1) {
 			collision1 = getCollisionHandler.checkForCollisions(loadArrayMap, xpos + x, ypos + y);
 		} else {
 			collision1 = getCollisionHandler.checkForBackground(loadArrayMap, xpos + x, ypos + y);
 		}
-		// this.loadImage1(direction, this);
 		if (!collision1) {
 
 			loadArrayMap[xpos + x][ypos + y] = loadArrayMap[xpos][ypos];
@@ -41,6 +41,8 @@ public class MobileElements extends Entity {
 			this.setPositionX(xpos + x);
 		} else if (collision1) {
 			this.setIsAlive1(false);
+			this.Winner1 = false;
+			this.Winner2 = true;
 		}
 	}
 
@@ -50,14 +52,12 @@ public class MobileElements extends Entity {
 		final Entity[][] loadArrayMap = this.getMap().getArrayMap();
 		final CollisionsHandler getCollisionHandler = this.getMap().getCollisionsHandler();
 		boolean collision2 = false;
-		boolean isPlayer = false;
 
 		if (this instanceof Player1) {
 			collision2 = getCollisionHandler.checkForCollisions(loadArrayMap, xpos + x, ypos + y);
 		} else {
 			collision2 = getCollisionHandler.checkForBackground(loadArrayMap, xpos + x, ypos + y);
 		}
-		// this.loadImage1(direction, this);
 		if (!collision2) {
 
 			loadArrayMap[xpos + x][ypos + y] = loadArrayMap[xpos][ypos];
@@ -66,60 +66,10 @@ public class MobileElements extends Entity {
 			this.setPositionX(xpos + x);
 		} else if (collision2) {
 			this.setIsAlive2(false);
+			this.Winner1 = true;
+			this.Winner2 = false;
 		}
 
-	}
-
-	public void loadImage1(char direction, Entity entity) {
-
-		switch (direction) {
-
-		case 'Q':
-			entity.setSprite(entity.getSpritePlayer1());
-			try {
-				entity.getSprite().loadImage();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			break;
-		case 'S':
-			entity.setSprite(entity.getSpritePlayer1());
-			try {
-				entity.getSprite().loadImage();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			break;
-
-		}
-	}
-
-	public void loadImage2(char direction, Entity entity) {
-
-		switch (direction) {
-
-		case 'M':
-			entity.setSprite(entity.getSpritePlayer2());
-			try {
-				entity.getSprite().loadImage();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			break;
-		case 'L':
-			entity.setSprite(entity.getSpritePlayer2());
-			try {
-				entity.getSprite().loadImage();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			break;
-
-		}
 	}
 
 	public boolean getIsAlive1() {
@@ -136,5 +86,21 @@ public class MobileElements extends Entity {
 
 	public void setIsAlive2(boolean isAlive2) {
 		this.isAlive2 = isAlive2;
+	}
+
+	public boolean getWinner1() {
+		return Winner1 = false;
+	}
+
+	public boolean setWinner1(boolean Winner1) {
+		return this.Winner1 = Winner1;
+	}
+
+	public boolean getWinner2() {
+		return Winner2 = false;
+	}
+
+	public boolean setWinner2(boolean Winner2) {
+		return this.Winner2 = Winner2;
 	}
 }

@@ -1,7 +1,5 @@
 package com.collisionhandler;
 
-import com.entity.mobileelements.Player1;
-import com.entity.mobileelements.Player2;
 import com.entity.motionlesselements.Background;
 import com.entity.motionlesselements.Blueline;
 import com.entity.motionlesselements.Redline;
@@ -25,23 +23,6 @@ public class CollisionsHandler {
 		} else {
 			return false;
 		}
-	}
-
-	public boolean checkForPlayer1(Entity[][] entity, int x, int y) {
-
-		if (entity[x][y] instanceof Player1) {
-			return true;
-		}
-		return false;
-	}
-
-
-	public boolean checkForPlayer2(Entity[][] entity, int x, int y) {
-
-		if (entity[x][y] instanceof Player2) {
-			return true;
-		}
-		return false;
 	}
 
 	public boolean checkForBackground(Entity[][] entity, int x, int y) {

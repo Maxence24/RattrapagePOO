@@ -17,9 +17,9 @@ public interface IModel {
 	
 	Player2 getPlayer2();
 
-	void loadMap();
-
 	void modelNotify();
 	
 	void loop();
+
+	void isWinner(int number);
 }

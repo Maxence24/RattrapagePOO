@@ -10,7 +10,6 @@ public class Player2 extends MobileElements {
 
 	private static final Sprite spritePlayer2 = new Sprite('y', "bleu_gauche.jpg");
 	private boolean isWin;
-	private static int SPEED = 2;
 	private int lastDirectionX;
 	private int lastDirectionY;
 
@@ -95,7 +94,7 @@ public class Player2 extends MobileElements {
 				|| this.getMap().getArrayMap()[x][y + 1] instanceof Redline
 				|| this.getMap().getArrayMap()[x][y - 1] instanceof Redline) {
 			this.setIsAlive2(false);
-			this.loadImage1('X', this);
+			//this.loadImage1(this);
 
 			try {
 				Thread.sleep(100);

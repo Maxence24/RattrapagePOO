@@ -10,7 +10,6 @@ public class Player1 extends MobileElements {
 
 	private static final Sprite spritePlayer1 = new Sprite('y', "Plan_de_travail_1-100.jpg");
 	private boolean isWin;
-	private static int SPEED = 2;
 	private int lastDirectionX;
 	private int lastDirectionY;
 
@@ -55,7 +54,7 @@ public class Player1 extends MobileElements {
 					this.setLastDirection1(-1, 0);
 				}
 				break;
-			case 's':
+			case 'S':
 				if (lastDirectionX == +1 && lastDirectionY == 0) {
 					this.enitymove1(0, +1);
 					this.setLastDirection1(0, +1);
@@ -112,7 +111,7 @@ public class Player1 extends MobileElements {
 				|| this.getMap().getArrayMap()[x][y + 1] instanceof Blueline
 				|| this.getMap().getArrayMap()[x][y - 1] instanceof Blueline) {
 			this.setIsAlive1(false);
-			this.loadImage1('X', this);
+			//this.loadImage1( this);
 
 			try {
 				Thread.sleep(100);

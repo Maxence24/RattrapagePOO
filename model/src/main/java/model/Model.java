@@ -7,11 +7,11 @@ import com.entity.mobileelements.Player2;
 
 import contract.IModel;
 import entity.Map;
-import java.sql.CallableStatement;
 
 public final class Model extends Observable implements IModel {
 
 	private Map map;
+	private DAOWinner daoWinner;
 
 	public Model() {
 		this.map = new Map();
@@ -42,9 +42,23 @@ public final class Model extends Observable implements IModel {
 
 	@Override
 	public void loop() {
-		if(this.getMap().getPlayer1() != null && this.getMap().getPlayer2() != null) {
-		this.modelNotify();
+		if (this.getMap().getPlayer1() != null && this.getMap().getPlayer2() != null) {
+			this.modelNotify();
+			this.getMap().loop();
 		}
+	}
+
+	@Override
+	public void isWinner(int number) {
+		String winner;
+		if (number == 1) {
+			winner = "Player 1";
+			this.daoWinner.NewWinner(winner);
+		} else if (number == 2) {
+			winner = "Player 2";
+			this.daoWinner.NewWinner(winner);
+		}
+
 	}
 
 	@Override
@@ -62,7 +76,7 @@ public final class Model extends Observable implements IModel {
 	@Override
 	public void loadMap() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

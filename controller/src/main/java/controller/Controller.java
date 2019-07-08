@@ -45,12 +45,12 @@ public final class Controller implements IController {
 		}
 	}
 
-	public void start() {
-
+	public void start(int SPEED) {
+		
 		while (true) {
 			this.model.loop();
 			try {
-				Thread.sleep(100);
+				Thread.sleep(SPEED);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

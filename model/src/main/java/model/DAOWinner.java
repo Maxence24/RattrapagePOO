@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 import com.entity.mobileelements.MobileElements;
 
-public class DAOWinner<M extends MobileElements> {
+public class DAOWinner {
 	
 	private final Connection connection;
 	
@@ -19,11 +19,11 @@ public class DAOWinner<M extends MobileElements> {
 	}
 
 
-	public MobileElements addWinner(String winner) {
+	public MobileElements NewWinner(String Winner) {
 		try {
-			final String sql = "{call addWinner(?)}";
+			final String sql = "{call NewWinner(?)}";
 			final CallableStatement call = this.getConnection().prepareCall(sql);
-			call.setString(1, winner);
+			call.setString(1, Winner);
 			call.execute();
 		} catch (final SQLException e) {
 			e.printStackTrace();

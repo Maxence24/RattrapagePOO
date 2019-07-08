@@ -12,11 +12,12 @@ public abstract class Main {
 		final Model model = new Model();
 		final View view = new View(model);
 		final Controller controller = new Controller(view, model);
+		final  int SPEED = 200;
 		view.setController(controller);
 
 		controller.control();
-		controller.orderPerform(ControllerOrder.Q);
+		controller.orderPerform(ControllerOrder.S);
         controller.orderPerform(ControllerOrder.L);
-		controller.start();
+		controller.start(SPEED);
 	}
 }
