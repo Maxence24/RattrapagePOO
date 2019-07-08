@@ -9,7 +9,6 @@ import entity.Sprite;
 public class Player1 extends MobileElements {
 
 	private static final Sprite spritePlayer1 = new Sprite('y', "Plan_de_travail_1-100.jpg");
-	private boolean isWin;
 	private int lastDirectionX;
 	private int lastDirectionY;
 
@@ -24,7 +23,6 @@ public class Player1 extends MobileElements {
 	public Player1(int x, int y) {
 		super(spritePlayer1, x, y);
 		this.isAlive1 = true;
-		this.isWin = false;
 
 	}
 
@@ -93,14 +91,6 @@ public class Player1 extends MobileElements {
 		this.enitymove1(this.getLastDirectionXPlayer1(), this.getLastDirectionYPlayer1());
 	}
 
-	public boolean getIsWin() {
-		return isWin;
-	}
-
-	public void setIsWin(boolean isWin) {
-		this.isWin = isWin;
-	}
-
 	public void player1DeathLinkToplayer2() {
 
 		int x = this.getPositionX();
@@ -111,7 +101,7 @@ public class Player1 extends MobileElements {
 				|| this.getMap().getArrayMap()[x][y + 1] instanceof Blueline
 				|| this.getMap().getArrayMap()[x][y - 1] instanceof Blueline) {
 			this.setIsAlive1(false);
-			//this.loadImage1( this);
+			// this.loadImage1( this);
 
 			try {
 				Thread.sleep(100);

@@ -9,7 +9,6 @@ import entity.Sprite;
 public class Player2 extends MobileElements {
 
 	private static final Sprite spritePlayer2 = new Sprite('y', "bleu_gauche.jpg");
-	private boolean isWin;
 	private int lastDirectionX;
 	private int lastDirectionY;
 
@@ -24,7 +23,6 @@ public class Player2 extends MobileElements {
 	public Player2(int x, int y) {
 		super(spritePlayer2, x, y);
 		this.isAlive2 = true;
-		this.isWin = false;
 
 	}
 
@@ -76,13 +74,6 @@ public class Player2 extends MobileElements {
 		}
 	}
 
-	public boolean getIsWin() {
-		return isWin;
-	}
-
-	public void setIsWin(boolean isWin) {
-		this.isWin = isWin;
-	}
 
 	public void player2DeathLinkToplayer1() {
 

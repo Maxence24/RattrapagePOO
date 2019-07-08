@@ -73,10 +73,4 @@ public final class Model extends Observable implements IModel {
 		return null;
 	}
 
-	@Override
-	public void loadMap() {
-		// TODO Auto-generated method stub
-
-	}
-
 }
